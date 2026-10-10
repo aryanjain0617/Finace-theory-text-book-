@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zerodha Varsity - PDF Tab System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js for interactive tabs -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-gray-100 font-sans antialiased" x-data="{ activeTab: 'pdf1' }">
+
+    <div class="flex h-screen overflow-hidden">
+
+        <!-- Sidebar Navigation -->
+        <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-xl">
+            <div class="p-5 border-b border-slate-800">
+                <h1 class="text-xl font-bold tracking-wider text-blue-400">Varsity Reader</h1>
+                <p class="text-xs text-slate-400 mt-1">9-Module PDF Tab System</p>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+                <!-- Tab Buttons -->
+                <template x-for="tab in [
+                    { id: 'pdf1', name: 'Module 1: Intro to Stocks' },
+                    { id: 'pdf2', name: 'Module 2: Technical Analysis' },
+                    { id: 'pdf3', name: 'Module 3: Fundamental Analysis' },
+                    { id: 'pdf4', name: 'Module 4: Futures Trading' },
+                    { id: 'pdf5', name: 'Module 5: Options-Theory-for-Professional-Trading' },
+                    { id: 'pdf6', name: 'Module 6: Option Strategies' },
+                    { id: 'pdf7', name: 'Module 7: Risk Management & Trading Psychology' },
+                    { id: 'pdf8', name: 'Module 8: Trading Systems' },
+                    { id: 'pdf9', name: 'Module 9: Personal-Finance' }
+                ]">
+                    <button @click="activeTab = tab.id"
+                        :class="activeTab === tab.id ? 'bg-blue-600 text-white font-medium shadow-md' : 'text-slate-300 hover:bg-slate-800 hover:text-white'"
+                        class="w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-150 flex items-center justify-between">
+                        <span x-text="tab.name"></span>
+                        <svg class="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                </template>
+            </nav>
+
+            <div class="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
+                Hosted via GitHub Pages
+            </div>
+        </aside>
+
+        <!-- Main Content Area (PDF Viewer) -->
+        <main class="flex-1 flex flex-col h-full overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-white shadow-sm h-16 flex items-center justify-between px-8 z-10">
+                <h2 class="text-lg font-semibold text-slate-800" x-text="
+                    activeTab === 'pdf1' ? 'Module 1: Introduction to Stock Markets' :
+                    activeTab === 'pdf2' ? 'Module 2: Technical Analysis' :
+                    activeTab === 'pdf3' ? 'Module 3: Fundamental Analysis' : 'Selected Module'
+                "></h2>
+                <div class="text-sm text-slate-500">
+                    Storage Optimized Tab System
+                </div>
+            </header>
+
+            <!-- PDF Viewer Panels -->
+            <div class="flex-1 bg-slate-200 p-6 overflow-hidden">
+                <div
+                    class="bg-white w-full h-full rounded-xl shadow-md overflow-hidden border border-slate-300 flex flex-col">
+
+                    <!-- PDF 1 -->
+                    <div x-show="activeTab === 'pdf1'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%201_Introduction%20to%20Stock%20Markets.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 2 -->
+                    <div x-show="activeTab === 'pdf2'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%202_Technical%20Analysis.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 3 -->
+                    <div x-show="activeTab === 'pdf3'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%203_Fundamental%20Analysis.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 4 -->
+                    <div x-show="activeTab === 'pdf4'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%204_Futures%20Trading.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 5 -->
+                    <div x-show="activeTab === 'pdf5'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%205_Options-Theory-for-Professional-Trading.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 6 -->
+                    <div x-show="activeTab === 'pdf6'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%206_Option Strategies.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 7 -->
+                    <div x-show="activeTab === 'pdf7'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%209_Risk%20Management%20&%20Trading%20Psychology.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 8 -->
+                    <div x-show="activeTab === 'pdf8'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module%2010_Trading%20Systems.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+                    <!-- PDF 9 -->
+                    <div x-show="activeTab === 'pdf9'" class="w-full h-full">
+                        <iframe
+                            src="file:///C:/Users/skssu/Desktop/Zerodha%20study%20material%20to%20make%20it%20a%20book%20spiral%20book%20-%20Copy/Module11_Personal-Finance.pdf"
+                            class="w-full h-full" type="application/pdf"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+
+</html>
